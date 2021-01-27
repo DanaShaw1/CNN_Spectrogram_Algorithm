@@ -3,6 +3,7 @@ channels:
   - pytorch
   - anaconda
   - defaults
+  - 'https://repo.continuum.io/pkgs/free'
 dependencies:
   - _anaconda_depends=5.0.1=py36h6e48e2d_1
   - alabaster=0.7.12=py36_0
