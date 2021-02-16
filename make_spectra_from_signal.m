@@ -5,6 +5,12 @@
 file_name = 'Put the name of your .mat file here';
 load(file_name)
 Fs =  1/(tEDF(10)-tEDF(9));
+
+%Make noise data
+% Fs = 1000;
+% dEDF = randn(50000,1);
+% tEDF = (1:50000)/Fs;
+
 winSize = round(Fs);
 winStep = round(Fs/2);
 
