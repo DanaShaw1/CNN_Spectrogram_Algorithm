@@ -16,10 +16,10 @@ total_data_pts = header.datapoints;
 data = lay_data_read( header, 1, Fs * 1000 );
 
 %Extract data specified channels
-d1 = data(11,:);
-d2 = data(12,:);
+% d1 = data(13,:);
+% d2 = data(14,:);
 
-dEDF = -(d1 - d2);
+dEDF = data(14,:);
 
 %Time axis
 tEDF = (1:size(dEDF,2))/Fs;
@@ -28,5 +28,5 @@ tEDF = (1:size(dEDF,2))/Fs;
 plot(tEDF,dEDF)
 
 %Save the data into a new file
-newfile = 'UMHS-0018-0002.day-04_BD1-BD2.mat';
+newfile = 'UMHS-0018-0002.day-04_BD4.mat';
 save(newfile,'dEDF', 'tEDF');
