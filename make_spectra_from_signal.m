@@ -2,7 +2,7 @@
 % dEDF: the data (Nx1 vector)
 % tEDF: the time (Nx1 vector)
 
-file_name = 'Put the name of your .mat file here';
+file_name = 'UMHS-0018-0002.day-04.mat';
 load(file_name)
 Fs =  1/(tEDF(10)-tEDF(9));
 
@@ -18,10 +18,12 @@ S = {};
 i_stop = 1;
 i = 1; counter=1;
 
-folder_name = 'test_data';
+folder_name = 'UMHS-0018-0002.day-04_ch1_1000s';
 mkdir(folder_name)
 
-while tEDF(i_stop) < 600 % only looking at the first 600 seconds, can change to any value
+disp('Working...')
+
+while tEDF(i_stop) < 1000%600 % only looking at the first 600 seconds, can change to any value
 
     i_start = i;
     i_stop  = i_start + winSize - 1;
@@ -49,4 +51,5 @@ while tEDF(i_stop) < 600 % only looking at the first 600 seconds, can change to 
     i = i_start + winStep;
     counter=counter+1;
 end
-      
+     
+disp('Done.')
