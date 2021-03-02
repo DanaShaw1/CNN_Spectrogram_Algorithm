@@ -2,7 +2,7 @@
 % dEDF: the data (Nx1 vector)
 % tEDF: the time (Nx1 vector)
 
-file_name = 'UMHS-0018-0002.day-04.mat';
+file_name = 'UMHS-0018-0002.day-04_BD1-BD2_transpose.mat';
 load(file_name)
 Fs =  1/(tEDF(10)-tEDF(9));
 
@@ -18,7 +18,7 @@ S = {};
 i_stop = 1;
 i = 1; counter=1;
 
-folder_name = 'UMHS-0018-0002.day-04_ch1_1000s';
+folder_name = 'UMHS-0018-0002.day-04_BD1-BD2_transpose';
 mkdir(folder_name)
 
 disp('Working...')
@@ -38,9 +38,10 @@ while tEDF(i_stop) < 1000%600 % only looking at the first 600 seconds, can chang
     params.tEDF  = t;
     [S0,S_times,S_freq] = hannspecgramc(dspec,movingwin,params);
     %Smooth the spectra.
-    t_smooth = 11;
+    t_smooth = 11;%31;
     dt_S     = S_times(2)-S_times(1);
     myfilter = fspecial('gaussian',[1 t_smooth], 1);
+    %myfilter = fspecial('gaussian',[t_smooth 1], 1);
     S_smooth = imfilter(S0, myfilter, 'replicate');   % Smooth the spectrum.
 
     A = log10(S_smooth);
