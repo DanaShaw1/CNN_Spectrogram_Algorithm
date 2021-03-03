@@ -2,7 +2,7 @@
 % dEDF: the data (Nx1 vector)
 % tEDF: the time (Nx1 vector)
 
-file_name = 'UMHS-0018-0002.day-04_BD1-BD2_transpose.mat';
+file_name = 'UMHS-0018-0002.day-04_CD1-CD2.mat';
 load(file_name)
 Fs =  1/(tEDF(10)-tEDF(9));
 
@@ -18,12 +18,12 @@ S = {};
 i_stop = 1;
 i = 1; counter=1;
 
-folder_name = 'UMHS-0018-0002.day-04_BD1-BD2_transpose';
+folder_name = 'UMHS-0018-0002.day-04_CD1-CD2';
 mkdir(folder_name)
 
 disp('Working...')
 
-while tEDF(i_stop) < 1000%600 % only looking at the first 600 seconds, can change to any value
+while tEDF(i_stop) < floor(length(tEDF)/Fs)%600 % only looking at the first 600 seconds, can change to any value
 
     i_start = i;
     i_stop  = i_start + winSize - 1;
